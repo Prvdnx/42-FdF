@@ -43,14 +43,14 @@ void    color(t_fdf *fdf, int key)
 
 void    move(t_fdf *fdf, int key)
 {
-    if (key == 69)
+   /*if (key == 69)
         fdf->draw.height <= 10 ? fdf->draw.height += 1 : fdf->draw.height;
     if (key == 78)
         fdf->draw.height >= -18 ? fdf->draw.height -= 1 : fdf->draw.height;
     if (key == 35)
         fdf->draw.spase <= 58 ? fdf->draw.spase += 1 : fdf->draw.spase;
     if (key == 46)
-        fdf->draw.spase >= 2 ? fdf->draw.spase - 1 : fdf->draw.spase;
+        fdf->draw.spase >= 2 ? fdf->draw.spase - 1 : fdf->draw.spase;*/
     
 
     if (key == 69)
@@ -136,5 +136,5 @@ int mouse(int key)
 {
     key = 1;
     exit(1);
-    return 0;
+    return (0);
 }
