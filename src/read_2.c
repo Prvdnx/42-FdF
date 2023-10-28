@@ -17,10 +17,10 @@ int check_line(char *line, t_fdf *fdf)
                 line[i] == ' ' || line[i] == '\n')
             k = 0;
         else
-            fdf->nap.error = -1;
+            fdf->map.error = -1;
         if (i != 0 && line[i] == '-' && (line[i - 1] >= 48 &&
                 line[i - 1] < 57))
-            fdf->nap.error = -1;
+            fdf->map.error = -1;
         i++;
     }
     return 1;
