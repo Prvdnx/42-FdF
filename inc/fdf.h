@@ -2,8 +2,8 @@
 #ifndef FDF_H
 # define FDF_H
 
-# include "../libft/libft.h"
-# include "mlx.h"
+# include "../ft_libft/libft.h"
+# include "../minilibx/mlx.h"
 # include "stdlib.h"
 
 typedef struct  s_window
