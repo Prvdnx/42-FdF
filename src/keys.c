@@ -73,36 +73,6 @@ void    move(t_fdf *fdf, int key)
 		if (fdf->draw.spase > 2)
 			fdf->draw.spase -= 1;
 	}
-
-/*if (key == 69) {
-	if (fdf->draw.height <= 10) {
-		fdf->draw.height += 1;
-	} else {
-		fdf->draw.height = fdf->draw.height;
-	}
-}
-if (key == 78) {
-	if (fdf->draw.height >= -18) {
-		fdf->draw.height -= 1;
-	} else {
-		fdf->draw.height = fdf->draw.height;
-	}
-}
-if (key == 35) {
-	if (fdf->draw.spase <= 58) {
-		fdf->draw.spase += 1;
-	} else {
-		fdf->draw.spase = fdf->draw.spase;
-	}
-}
-if (key == 46) {
-	if (fdf->draw.spase >= 2) {
-		fdf->draw.spase -= 1;
-	} else {
-		fdf->draw.spase = fdf->draw.spase;
-	}
-}*/
-	
 	if (key == 126)
 		fdf->draw.start_x += 10;
 	if (key == 123)

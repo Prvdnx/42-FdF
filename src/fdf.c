@@ -25,6 +25,5 @@ int main(int argc, char *arg[])
 		read_file(arg[1], fdf);
 		test_draw(fdf);
 	}
-
 	return (0);
 }
