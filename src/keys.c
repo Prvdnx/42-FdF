@@ -51,7 +51,6 @@ void    move(t_fdf *fdf, int key)
 		fdf->draw.spase <= 58 ? fdf->draw.spase += 1 : fdf->draw.spase;
 	if (key == 46)
 		fdf->draw.spase >= 2 ? fdf->draw.spase - 1 : fdf->draw.spase;*/
-	
 
 	if (key == 69)
 	{
