@@ -32,6 +32,7 @@ void drawline(t_fdf *fdf)
 
 	//cons.signx = fdf->draw.x1 < fdf->draw.x2 ? 1 : -1;
 	//cons.signy = fdf->draw.y1 < fdf->draw.y2 ? 1 : -1;
+	
 	if (fdf->draw.x1 < fdf->draw.x2)
 		cons.signx = 1;
 	else
