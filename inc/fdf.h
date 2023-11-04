@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/03 19:18:27 by ookamonu          #+#    #+#             */
+/*   Updated: 2023/11/04 22:39:31 by ookamonu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
 # include "../ft_libft/libft.h"
 # include "../minilibx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "stdlib.h"
+# include <fcntl.h>
 
 typedef struct	s_window
 {
@@ -14,7 +27,7 @@ typedef struct	s_window
 
 typedef struct	s_map
 {
-	int		**karta;
+	int		**structure;
 	int		line;
 	int		elem;
 	int		fd;
@@ -33,7 +46,7 @@ typedef struct	s_draw_map
 	int		y1;
 	int		y2;
 	int		color;
-	int		spase;
+	int		space;
 	int		height;
 	int		x;
 	int		y;
@@ -63,6 +76,7 @@ typedef struct	s_con
 typedef struct	s_fdf
 {
 	t_draw_map	draw;
+	t_map		map;
 	t_window	win;
 	t_menu		menu;
 }				t_fdf;
@@ -76,7 +90,7 @@ void	draw_point(t_fdf *fdf);
 void	test_draw(t_fdf *fdf);
 void	draw_ver(t_fdf *fdf);
 void	draw_hor(t_fdf *fdf);
-int		write_key(int key, t_fdf *fdf);
+int		keybd_key(int key, t_fdf *fdf);
 int		mouse(int key);
 void	start_value(t_fdf *fdf);
 int		space(t_fdf *fdf);

@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/11 09:15:59 by ookamonu          #+#    #+#             */
+/*   Updated: 2023/11/03 21:02:12 by ookamonu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int str_to_mass_num(char **map, t_fdf *fdf)
+void str_to_mass_num(char **map, t_fdf *fdf)
 {
 	char    **tmp;
 	int     x;
 	int     y;
 
 	y = 0;
-	fdf->map.karta = (int **)malloc(sizeof(int *) * fdf->map.line);
+	fdf->map.structure = (int **)malloc(sizeof(int *) * fdf->map.line);
 	while (y < fdf->map.line)
 	{
-		fdf->map.karta[y] = (int *)malloc(sizeof(int) * fdf->map.elem);
-		tmp = ft_strsplit(map[y], ' ');
+		fdf->map.structure[y] = (int *)malloc(sizeof(int) * fdf->map.elem);
+		tmp = ft_split(map[y], ' ');
 		free(map[y]);
 		x = 0;
 		while (x < fdf->map.elem)
 		{
-			fdf->map.karta[y][x] = atoi(tmp[x]);
+			fdf->map.structure[y][x] = atoi(tmp[x]);
 			free(tmp[x]);
 			x++;
 		}

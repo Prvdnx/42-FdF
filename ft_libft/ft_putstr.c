@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 01:17:53 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/04 18:53:58 by ookamonu         ###   ########.fr       */
+/*   Created: 2023/10/05 20:54:47 by ookamonu          #+#    #+#             */
+/*   Updated: 2023/11/04 18:38:54 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int main(int argc, char *arg[])
+int	ft_putchar(char c)
 {
-	t_fdf *fdf;
+	write(1, &c, 1);
+}
 
-	if (argc < 2)
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putstr("no file to read\n");
+		ft_putchar(str[i]);
+		i++;
 	}
-	else if (argc > 2)
-	{
-		ft_putstr("too many files\n");
-	}
-	else if (argc == 2)
-	{
-		fdf = (t_fdf*)malloc(sizeof(t_fdf));
-		
-		if (ft_read_2(arg[1], fdf) == -1)
-		{
-			ft_putstr("error file");
-			exit(1);
-		}
-		read_file(arg[1], fdf);
-		test_draw(fdf);
-	}
-	return (0);
 }

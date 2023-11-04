@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   need.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/29 01:20:56 by ookamonu          #+#    #+#             */
+/*   Updated: 2023/11/03 19:47:44 by ookamonu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include "math.h"
@@ -32,7 +43,6 @@ void drawline(t_fdf *fdf)
 
 	//cons.signx = fdf->draw.x1 < fdf->draw.x2 ? 1 : -1;
 	//cons.signy = fdf->draw.y1 < fdf->draw.y2 ? 1 : -1;
-	
 	if (fdf->draw.x1 < fdf->draw.x2)
 		cons.signx = 1;
 	else

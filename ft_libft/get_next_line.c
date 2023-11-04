@@ -6,13 +6,13 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:08:55 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/10/27 01:46:05 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/03 23:15:02 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_gnlstrlen(char *string)
+/*int	ft_gnlstrlen(char *string)
 {
 	int	count;
 
@@ -65,4 +65,40 @@ char	*get_next_line(int fd)
 	if (b <= 0 && i == 0)
 		return (NULL);
 	return (ft_gnlstrdup(line));
+}*/
+
+int	get_next_line(const int fd, char **line)
+{
+	char	buffer;
+	char	*str;
+	int		b;
+	int		i;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
+		return (-1);
+		
+	i = 0;
+	str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!str)
+		return (-1);
+	b = read(fd, &buffer, BUFFER_SIZE);
+	while (b > 0)
+	{
+		str[i++] = buffer;
+		if (buffer == '\n')
+			break ;
+		b = read(fd, &buffer, BUFFER_SIZE);
+	}
+	str[i] = '\0';
+	if (b <= 0 && i == 0)
+	{
+		free(str);
+		return (0);
+	}
+	*line = str;
+	if (ft_strlen(*line) > 0)
+	return (1);
+	else
+	return (0);
 }
+	// return (ft_strlen(*line) > 0 ? 1 : 0);

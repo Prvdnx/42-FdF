@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/23 03:20:26 by ookamonu          #+#    #+#             */
+/*   Updated: 2023/11/04 21:48:12 by ookamonu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
@@ -5,7 +16,7 @@ int menu_key(int key, t_fdf *fdf)
 {
 	if (key == 48)
 	{
-		fdf->menu.m_nenu = 1;
+		fdf->menu.m_menu = 1;
 		mlx_destroy_window(fdf->menu.mlx_ptr, fdf->menu.win_ptr);
 	}
 	return (0);
@@ -29,10 +40,10 @@ void    colors(t_fdf *fdf)
 
 void    menu(t_fdf *fdf, int key)
 {
-	if (fdf->menu.m_nenu == 1)
+	if (fdf->menu.m_menu == 1)
 	{
-		key = 1;
-		fdf->menu.m_nenu = 2;
+		(void)key;
+		fdf->menu.m_menu = 2;
 		fdf->menu.mlx_ptr = mlx_init();
 		fdf->menu.win_ptr = mlx_new_window(fdf->menu.mlx_ptr, 800, 800, "MENU");
 		mlx_hook(fdf->menu.win_ptr, 2, 0, menu_key, fdf);

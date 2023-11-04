@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 06:15:13 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/10/27 01:30:10 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/04 18:38:46 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 # include<stdlib.h>
 
 //get_next_line.c
-char	*get_next_line(int fd);
+/*char	*get_next_line(int fd);
 int		ft_gnlstrlen(char *str);
-char	*ft_gnlstrdup(char *str);
+char	*ft_gnlstrdup(char *str);*/
+int	get_next_line(const int fd, char **line);
 
 //String Prototypes
 int		ft_isdigit(int c);
@@ -30,6 +31,8 @@ int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_putchar(char c);
+void	ft_putstr(char *str);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 size_t	ft_strlen(const char *s);

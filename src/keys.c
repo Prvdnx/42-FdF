@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/23 22:20:42 by ookamonu          #+#    #+#             */
+/*   Updated: 2023/11/04 21:46:13 by ookamonu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
@@ -51,6 +62,7 @@ void    move(t_fdf *fdf, int key)
 		fdf->draw.spase <= 58 ? fdf->draw.spase += 1 : fdf->draw.spase;
 	if (key == 46)
 		fdf->draw.spase >= 2 ? fdf->draw.spase - 1 : fdf->draw.spase;*/
+	(void)key;
 
 	if (key == 69)
 	{
@@ -64,13 +76,13 @@ void    move(t_fdf *fdf, int key)
 	}
 	if (key == 35)
 	{
-		if (fdf->draw.spase < 58)
-			fdf->draw.spase += 1;
+		if (fdf->draw.space < 58)
+			fdf->draw.space += 1;
 	}
 	if (key == 46)
 	{
-		if (fdf->draw.spase > 2)
-			fdf->draw.spase -= 1;
+		if (fdf->draw.space > 2)
+			fdf->draw.space -= 1;
 	}
 	if (key == 126)
 		fdf->draw.start_x += 10;
@@ -86,7 +98,7 @@ void    move(t_fdf *fdf, int key)
 		start_value(fdf);
 }
 
-int wtrite_key(int key, t_fdf *fdf)
+int	keybd_key(int key, t_fdf *fdf)
 {
 	mlx_clear_window(fdf->win.mlx_ptr, fdf->win.win_ptr);
 	move(fdf, key);
@@ -101,9 +113,9 @@ int wtrite_key(int key, t_fdf *fdf)
 	return (0);
 }
 
-int mouse(int key)
+int	mouse(int key)
 {
-	key = 1;
+	(void)key;
 	exit(1);
 	return (0);
 }
