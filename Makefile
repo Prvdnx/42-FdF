@@ -22,17 +22,19 @@ SRC = src/fdf.c \
 
 OUT = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
-MLX = -L minilibx -lmlx -framework OpenGL -framework AppKit
+MLX_DIR = minilibx
+MLX = -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): libft.a $(OUT)
-	gcc $(FLAGS) -o $(NAME) $(OUT) $(MLX) ./ft_libft/libft.a
+	@make -C $(MLX_DIR) --silent
+	gcc $(FLAGS) -o $(NAME) $(OUT) -L $(MLX_DIR) $(MLX) ./ft_libft/libft.a
+	@echo 'Compilation Complete!'
 
 libft.a:
 	$(MAKE) -C ./ft_libft
-	@echo 'Compilation Complete!'
-
+	
 clean:
 	rm -f $(OUT)
 	make -C ./ft_libft clean
