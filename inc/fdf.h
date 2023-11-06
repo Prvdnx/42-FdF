@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "../ft_libft/libft.h"
+# include "mlx.h"
 # include "../minilibx/mlx.h"
 # include "../minilibx-linux/mlx.h"
 # include "stdlib.h"
