@@ -22,7 +22,7 @@ SRC = src/fdf.c \
 
 OUT = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
-MLX = -L minilibx-linux -lmlx -framework OpenGL -framework AppKit
+MLX = -L minilibx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
