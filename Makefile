@@ -23,13 +23,13 @@ SRC = src/fdf.c \
 OUT = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 MLX_DIR = ./minilibx
-MLX = -L./minilibx-linux -lmlx -framework OpenGL -framework AppKit
+MLX = -L./minilibx -lmlx -framework OpenGL -framework AppKit
 HEADER = fdf.h
 
 all: $(NAME)
 
 $(NAME): $(OUT)
-	$(MAKE) -C ./minilibx-linux
+	@$(MAKE) -C ./minilibx
 	$(MAKE) -C ./ft_libft
 	gcc -o $(NAME) $(OUT) $(MLX) ./ft_libft/libft.a
 	@echo 'Compilation Complete!'
