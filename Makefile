@@ -1,46 +1,56 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/03 19:21:14 by ookamonu          #+#    #+#              #
-#    Updated: 2023/11/04 22:41:20 by ookamonu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# Compiler and linker settings
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g
+LDFLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
+# Project settings
 NAME = fdf
-SRC = src/fdf.c \
-		src/read.c \
-		src/for_draw.c \
-		src/keys.c \
-		src/draw_point.c \
-		src/menu.c \
-		src/need.c \
-		src/read_2.c
-
-OUT = $(SRC:.c=.o)
-FLAGS = -Wall -Wextra -Werror
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = includes
+LIBFT_DIR = ft_libft
 MLX_DIR = minilibx
-MLX = -lmlx -framework OpenGL -framework AppKit
+
+# Source files
+SRC_FILES = fdf.c \
+			read.c \
+			for_draw.c \
+			keys.c \
+			draw_point.c \
+			menu.c \
+			need.c \
+			read_2.c
+
+# Object files
+OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJ = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
+
+# Libraries
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# Targets
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME): libft.a $(OUT)
+$(NAME): $(OBJ) $(LIBFT)
 	@make -C $(MLX_DIR) --silent
-	gcc $(FLAGS) -o $(NAME) $(OUT) -L $(MLX_DIR) $(MLX) ./ft_libft/libft.a
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ) $(LIBFT)
 	@echo 'Compilation Complete!'
 
-libft.a:
-	$(MAKE) -C ./ft_libft
-	
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
 clean:
-	rm -f $(OUT)
-	make -C ./ft_libft clean
+	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
-	make -C ./ft_libft fclean
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(OBJ)
 
 re: fclean all

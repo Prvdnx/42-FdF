@@ -15,7 +15,7 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	typedef unsigned char byte;
-	if (NULL == src && NULL == dst)
+	if ((NULL == src && NULL == dst) || len < 0)
 		return (dst);
 	if (dst > src)
 		while (len--)
