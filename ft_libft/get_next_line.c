@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:08:55 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/03 23:15:02 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:22:25 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,38 +67,83 @@ char	*get_next_line(int fd)
 	return (ft_gnlstrdup(line));
 }*/
 
+char	*ft_strnew(size_t size)
+{
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = (char *)malloc(size + 1);
+	if (!str)
+		return NULL;
+	while (i <= size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return (str);
+}
+
+void	ft_strdel(char **as)
+{
+	if (as && *as)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}
+
+int ft_check(const int fd, char *buffer, char *result[fd])
+{
+    int i;
+    char *temp;
+    int ret = 0;
+
+    while (ft_strchr(buffer, '\n') == NULL && (i = read(fd, buffer, BUFFER_SIZE)) > 0)
+    {
+        buffer[i] = '\0';
+        temp = result[fd];
+        result[fd] = ft_strjoin(temp, buffer);
+        ft_strdel(&temp);
+        ft_strdel(&buffer);
+        if (i == -1)
+        {
+            ret = -1;
+            break;
+        }
+        ret = 1;
+        break;
+    }
+    return (ret);
+}
+
 int	get_next_line(const int fd, char **line)
 {
-	char	buffer;
-	char	*str;
-	int		b;
-	int		i;
+    char		*buffer;
+    static char	*result[BUFFER_SIZE + 1];
+    char		*leak;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
-		return (-1);
-		
-	i = 0;
-	str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!str)
-		return (-1);
-	b = read(fd, &buffer, BUFFER_SIZE);
-	while (b > 0)
-	{
-		str[i++] = buffer;
-		if (buffer == '\n')
-			break ;
-		b = read(fd, &buffer, BUFFER_SIZE);
-	}
-	str[i] = '\0';
-	if (b <= 0 && i == 0)
-	{
-		free(str);
-		return (0);
-	}
-	*line = str;
-	if (ft_strlen(*line) > 0)
-	return (1);
-	else
-	return (0);
+    if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, result[BUFFER_SIZE], 0) != 0)
+        return (-1);
+    if (result[fd] == NULL)
+        result[fd] = ft_strnew(1);
+    buffer = ft_strnew(BUFFER_SIZE);
+    if (ft_check(fd, buffer, result) == -1)
+        return (-1);
+    char *temp = ft_strchr(result[fd], '\n');
+    if (temp != NULL)
+    {
+        *line = ft_substr(result[fd], 0, temp - result[fd]);
+        leak = result[fd];
+        result[fd] = ft_strdup(temp + 1);
+        ft_strdel(&leak);
+        return (1);
+    }
+    *line = ft_strdup(result[fd]);
+    ft_strdel(&result[fd]);
+    ft_strdel(&temp);
+    if (ft_strlen(*line) > 0)
+        return (1);
+    else
+        return (0);
 }
-	// return (ft_strlen(*line) > 0 ? 1 : 0);

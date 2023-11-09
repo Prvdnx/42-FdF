@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:15:59 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/03 21:02:12 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/09 00:39:01 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ char *next_step(t_fdf *fdf, char *buf, char *tmp, char *line)
 	|| *line == ' ' || *line == '\n' || *line == '-'))
 	{
 		line++;
-		return 0;
+		return (0);
 	}
 	if (fdf->map.elem == ft_count_words(line, ' ') || fdf->map.line == 1)
 		fdf->map.elem = ft_count_words(line, ' ');
 	else
 	{
-		ft_putstr("give me valid file");
+		fdf_putstr("give me valid file");
 		exit(0);
 	}
 	tmp = ft_strjoin(buf, line);
@@ -80,4 +80,48 @@ char *next_step(t_fdf *fdf, char *buf, char *tmp, char *line)
 	buf = ft_strjoin(tmp, "\n");
 	free(tmp);
 	return (buf);
+}
+
+void	check(t_fdf *fdf)
+{
+	if(!fdf->map.elem || fdf->map.error == -1)
+	{
+		fdf_putstr("error file");
+		exit(0);
+	}
+}
+
+int	read_file(char *argv, t_fdf *fdf)
+{
+	char *line;
+	char *buf;
+	char **map;
+	char *tmp;
+
+	tmp = NULL;
+	fdf->map.line = 0;
+	if ((fdf->map.fd = open(argv, O_RDONLY)) < 0)
+		fdf->map.error = -1;
+
+	buf = ft_strdup("\0");
+
+	while ((get_next_line(fdf->map.fd, &line) > 0) && ++fdf->map.line)
+	{
+		//if (fdf->map.elem != number_spaces(line) ?
+			//fdf->map.error = -1 : fdf->map.elem);
+    	if (fdf->map.elem != number_spaces(line))
+        	fdf->map.error = -1;
+    	else
+        	fdf->map.elem = fdf->map.elem;
+		buf = next_step(fdf, buf, tmp, line);
+	}
+
+	free(line);
+	check(fdf);
+	close(fdf->map.fd);
+	map = ft_split(buf, '\n');
+	free(buf);
+	str_to_mass_num(map, fdf);
+	close(fdf->map.fd);
+	return (0);
 }

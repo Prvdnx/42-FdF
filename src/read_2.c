@@ -42,6 +42,9 @@ int number_spaces(char *line)
 	int k;
 	int i;
 
+	//if (line[0] == '\0')
+      //  return (0);
+
 	k = 0;
 	i = 0;
 	while (line[i])
@@ -57,7 +60,7 @@ int number_spaces(char *line)
 	}
 	if (line[i-1] == '-' || line[0] == ' ')
 		k--;
-	return k + 1;
+	return (k + 1);
 }
 
 int ft_read_2(char *argv, t_fdf *fdf)
@@ -80,5 +83,5 @@ int ft_read_2(char *argv, t_fdf *fdf)
 	}
 	if (k != -1)
 		free(line);
-	return fdf->map.error;
+	return (fdf->map.error);
 }

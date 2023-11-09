@@ -12,6 +12,8 @@
 #include	"mlx_int.h"
 
 extern struct s_col_name mlx_col_name[];
+unsigned int	mlx_get_color_value(void *mlx_ptr, int color);
+
 
 
 #define	RETURN	{ if (colors) free(colors); if (tab) free(tab); \

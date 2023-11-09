@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 22:20:42 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/04 21:46:13 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:50:46 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void    move(t_fdf *fdf, int key)
 		fdf->draw.spase <= 58 ? fdf->draw.spase += 1 : fdf->draw.spase;
 	if (key == 46)
 		fdf->draw.spase >= 2 ? fdf->draw.spase - 1 : fdf->draw.spase;*/
-	(void)key;
 
 	if (key == 69)
 	{

@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 06:15:13 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/04 18:38:46 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:23:47 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 # define BUFFER_SIZE 1
 
 //size_t, malloc, write
-# include<stddef.h>
-# include<unistd.h>
-# include<stdlib.h>
+# include <stddef.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 //get_next_line.c
 /*char	*get_next_line(int fd);
@@ -57,6 +57,8 @@ void	*ft_calloc(size_t nmenb, size_t size);
 char	*ft_strdup(const char *src);
 
 //2) Additional functions
+//void	ft_strdel(char **as);
+//char	*ft_strnew(size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);

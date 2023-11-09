@@ -6,11 +6,24 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:17:53 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/04 18:53:58 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/09 00:38:04 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+#include "../ft_libft/libft.h"
+
+void fdf_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 
 int main(int argc, char *arg[])
 {
@@ -18,11 +31,11 @@ int main(int argc, char *arg[])
 
 	if (argc < 2)
 	{
-		ft_putstr("no file to read\n");
+		fdf_putstr("no file to read\n");
 	}
 	else if (argc > 2)
 	{
-		ft_putstr("too many files\n");
+		fdf_putstr("too many files\n");
 	}
 	else if (argc == 2)
 	{
@@ -30,7 +43,7 @@ int main(int argc, char *arg[])
 		
 		if (ft_read_2(arg[1], fdf) == -1)
 		{
-			ft_putstr("error file");
+			fdf_putstr("error file");
 			exit(1);
 		}
 		read_file(arg[1], fdf);

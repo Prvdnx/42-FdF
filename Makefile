@@ -6,7 +6,7 @@
 #    By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 19:21:14 by ookamonu          #+#    #+#              #
-#    Updated: 2023/11/08 01:15:59 by ookamonu         ###   ########.fr        #
+#    Updated: 2023/11/10 00:55:13 by ookamonu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,27 +21,24 @@ SRC = src/fdf.c \
 		src/read_2.c
 
 OUT = $(SRC:.c=.o)
-FLAGS = -Wall -Wextra -Werror
-MLX_DIR = ./minilibx
-MLX = -L./minilibx -lmlx -framework OpenGL -framework AppKit
-HEADER = fdf.h
+CFLAGS = -Wall -Wextra -Werror -g
+MLX = -L./minilibx -l mlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): $(OUT)
-	@$(MAKE) -C ./minilibx
+	@$(MAKE) -C ./minilibx 2>/dev/null
 	$(MAKE) -C ./ft_libft
-	gcc -o $(NAME) $(OUT) $(MLX) ./ft_libft/libft.a
+	gcc $(CFLAGS) ./ft_libft/libft.a $(OUT) -o $(NAME) $(MLX)
 	@echo 'Compilation Complete!'
-
-%.o: %.c $(HEADER)
-	@gcc -Wall -Wextra -Werror -I. -c $< -o $@
 	
 clean:
 	rm -f $(OUT)
 	make -C ./ft_libft clean
+	$(MAKE) -C ./minilibx clean
 
 fclean: clean
 	make -C ./ft_libft fclean
+	$(MAKE) -C ./minilibx clean
 
 re: fclean all

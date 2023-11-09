@@ -6,7 +6,7 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:18:27 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/04 22:39:31 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:45:55 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 # define FDF_H
 
 # include "../ft_libft/libft.h"
-//# include "mlx.h"
+# include "mlx.h"
 # include "../minilibx/mlx.h"
-//# include "../minilibx-linux/mlx.h"
 # include "stdlib.h"
+# include "X11/X.h"
+# include "X11/keysym.h"
+# include <X11/Xlib.h>
+# include <X11/Xutil.h>
+# include <sys/ipc.h>
+# include <sys/shm.h>
+# include <X11/extensions/XShm.h>
+# include <X11/XKBlib.h>
 # include <fcntl.h>
 
 typedef struct	s_window
@@ -82,7 +89,7 @@ typedef struct	s_fdf
 	t_menu		menu;
 }				t_fdf;
 
-int		number_pases(char *line);
+int		number_spaces(char *line);
 int		ft_read_2(char *argv, t_fdf *fdf);
 int		read_file(char *argv, t_fdf *fdf);
 int		menu_key(int key, t_fdf *fdf);
@@ -96,5 +103,6 @@ int		mouse(int key);
 void	start_value(t_fdf *fdf);
 int		space(t_fdf *fdf);
 void	drawline(t_fdf *fdf);
+void	fdf_putstr(char *str);
 
 #endif
