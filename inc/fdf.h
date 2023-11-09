@@ -14,17 +14,9 @@
 # define FDF_H
 
 # include "../ft_libft/libft.h"
-# include "mlx.h"
+//# include "mlx.h"
 # include "../minilibx/mlx.h"
 # include "stdlib.h"
-# include "X11/X.h"
-# include "X11/keysym.h"
-# include <X11/Xlib.h>
-# include <X11/Xutil.h>
-# include <sys/ipc.h>
-# include <sys/shm.h>
-# include <X11/extensions/XShm.h>
-# include <X11/XKBlib.h>
 # include <fcntl.h>
 
 typedef struct	s_window
