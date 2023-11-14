@@ -6,12 +6,24 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:15:24 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/13 02:00:25 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/15 05:21:13 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/*-------------------------------------------------------------------------*\
+This handles the drawing of the terrain map. The draw_lines function sets up
+drawing information, including the 3D coordinates of the start and end points,
+and then calls the bresenham_algo function to draw lines between these points
+using Bresenham's line-drawing algorithm. The set_coordinates function
+iterates through the map, calling draw_lines for each pair of adjacent points,
+effectively drawing the entire map. The draw_map function serves as the entry
+point for map drawing, clearing the window, displaying the menu, and then
+calling set_coordinates to draw the complete map. All this play a crucial
+roles in visualizing the terrain, transforming 3D coordinates into 2D screen
+coordinates and utilizing Bresenham's algorithm for efficient line drawing.
+\*--------------------------------------------------------------------------*/
 static void	draw_now(t_fdf *data, t_draw start, t_draw end)
 {
 	t_var	var;

@@ -6,14 +6,23 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:15:59 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/13 02:00:09 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/15 05:21:26 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// Map_size function calculate the width and height of the map
-// and assign it to t_fdf structure height and width.
+/*-------------------------------------------------------------------------*\
+The map_size function opens the map file, counts number of lines (height),
+and determines the width of the map by counting the words in each line
+and assign it to t_fdf structure's height and width.
+The malloc_z function allocates memory for the 2D array that will store the
+map data. Then, the reading function opens the map file again, reads each
+line, and uses the fill_map function to convert the string representation of
+heights into integers, populating the 2D array. This accurately determining
+the dimensions of the terrain map and converting the file's content into a
+usable data structure
+\*--------------------------------------------------------------------------*/
 void	map_size(char *file, t_fdf *data)
 {
 	char	*line;

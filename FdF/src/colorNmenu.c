@@ -6,12 +6,21 @@
 /*   By: ookamonu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 01:20:56 by ookamonu          #+#    #+#             */
-/*   Updated: 2023/11/13 02:00:22 by ookamonu         ###   ########.fr       */
+/*   Updated: 2023/11/15 05:20:56 by ookamonu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/*-------------------------------------------------------------------------*\
+This handles the color scheme and menu display. The vibrant_color and elegant
+_color functions determine the color of a point based on its height and the
+chosen palette (vibrant or elegant). The color function sets the appropriate
+color based on the selected palette, and the display_menu function uses
+mlx_string_put to display a menu on the window. These provide visually
+appealing color choices and a clear menu interface, and allows to interact
+with the program more intuitively.
+\*--------------------------------------------------------------------------*/
 void	display_menu(t_fdf *data)
 {
 	mlx_string_put(data->mlx, data->win, 20, 10, 0xFF14B6, "*=====MENU=====*");
@@ -28,7 +37,7 @@ void	vibrant_color(t_fdf *data, int x, int y)
 	int	z;
 
 	z = data->map[y][x];
-	if (z > 0)
+	if (z > 9 && z < 95)
 		data->color = 0x860ACD;
 	else if (z * data->altitude < 0)
 		data->color = 0x009292;
@@ -41,7 +50,7 @@ void	elegant_color(t_fdf *data, int x, int y)
 	int	z;
 
 	z = data->map[y][x];
-	if (z > 0)
+	if (z > 9 && z < 95)
 		data->color = 0xF2D0EF;
 	else if (z * data->altitude < 0)
 		data->color = 0xCC1A99;
