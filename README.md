@@ -12,7 +12,9 @@ FdF is a graphic project where we represent the landscape of a given map on a sc
 ## Features
 - Reads map files (.fdf) containing height values.
 - Renders the wireframe mesh in 3D projection.
-- Supports zoom, translation, and rotation (if implemented as bonus).
+- **Isometric and Parallel projections**: Switch between projection modes.
+- **Color palettes**: Two color schemes (Vibrant and Elegant).
+- **Interactive controls**: Zoom, translation, projection switching, and palette changing via keyboard.
 
 ## Usage
 Compile and run the program with a map file:
